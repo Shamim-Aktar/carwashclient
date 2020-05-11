@@ -1,0 +1,57 @@
+<!-- <p>
+  addcardetail works!
+</p> -->
+
+<div class="container py-3">
+  <div class="row">
+    <div class="mx-auto col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0">Car info</h4>
+      </div>
+      <div class="card-body">
+        <form class="form" #carDetailForm="ngForm" (ngSubmit)="carDetailForm.valid && onSubmit(carDetailForm)">
+          <div class="form-group row">
+            <label class="col-lg-3 col-form-label form-control-label">Brand Name</label>
+            <div class="col-lg-9">
+                <input class="form-control" type="text" name="brandname" #brandname="ngModel" required
+                 [(ngModel)]="addcarservcie.cardetail.brandname"
+                 >
+            </div>
+            <div *ngIf="brandname.errors && (brandname.dirty || brandname.touched)" class="alert alert-danger">
+              <label class="validation-message">This field is required</label>
+
+            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Model Name</label>
+          <div class="col-lg-9">
+              <input class="form-control" type="text" name="modelname" #modelname="ngModel" [(ngModel)]="addcarservcie.cardetail.modelname">
+          </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-lg-3 col-form-label form-control-label">Vehicle number plate</label>
+        <div class="col-lg-9">
+            <input class="form-control" type="text" name="vehiclenumberplate" #vehiclenumberplate="ngModel" [(ngModel)]="addcarservcie.cardetail.vehiclenumberplate">
+        </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-lg-3 col-form-label form-control-label"></label>
+      <div class="col-lg-9">
+
+          <input type="submit" class="btn btn-primary" value="Save Changes">
+      </div>
+  </div>
+        </form>
+        <div *ngIf="showSuccessMessage" class="success">
+          user register successful
+      </div>
+      <div class="alert" *ngIf="serverErrorMessage">
+          {{serverErrorMessage}}
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
