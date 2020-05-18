@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 
 
@@ -10,7 +11,7 @@ import { Component, OnInit} from '@angular/core';
 export class ConfirmpageComponent implements OnInit {
   showModal: boolean;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.showModal = true;
@@ -19,6 +20,11 @@ export class ConfirmpageComponent implements OnInit {
   {
     this.showModal = !this.showModal
     console.log(this.showModal)
+  }
+
+  viewOrder(){
+    this.showModal = !this.showModal
+    this.router.navigateByUrl('/myorder')
   }
 
 }

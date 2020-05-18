@@ -1,0 +1,42 @@
+
+<div class="container">
+
+
+<div *ngIf="orders.length==0">
+  <div class="col-md-12 text-center" style="font-size:20px">
+
+      <p>You have no order</p>
+    </div>
+</div>
+
+
+
+
+
+  <div class="row">
+    <div class="col-sm-6"  *ngFor="let order of orders">
+
+      <div class="card" >
+        <div class="card-body">
+
+          <div class=" myorder   text-center"  style="font-size: 18px;">
+            <p>cartype  : <span>{{order.carType}}</span></p>
+            <p>servicetype : <span>{{order.serviceType}}</span></p>
+            <p>Order Number :<span>{{order.bookingNumber}}</span></p>
+            <p>PaymentMode :<span>{{order.paymentMode}}</span></p>
+            <p>price :<span>{{order.price}}</span></p>
+            <p>Address :<span>{{order.address}}</span></p>
+            <p>date :<span>{{order.date | date}}</span></p>
+          </div>
+
+
+          <button class="btn btn-primary" (click)= cancelOrder(order)>Cancel order</button>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+
+
+

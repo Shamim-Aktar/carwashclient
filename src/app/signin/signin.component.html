@@ -25,6 +25,10 @@
     <input type="submit" value="Submit" class="btn btn-primary">
 
   </form>
+  <div *ngIf="showSuccessMessage" class="success">
+    you are loggedin successfully
+</div>
+  <div (click)="goSignup()" style="cursor:pointer">Not Register please Signup</div>
   <div class="alert" *ngIf="serverErrorMessages">
     {{serverErrorMessages}}
 </div>

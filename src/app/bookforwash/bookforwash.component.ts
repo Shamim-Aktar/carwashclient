@@ -26,9 +26,9 @@ export class BookforwashComponent implements OnInit {
 getModel( ) {
   //console.log(data)
  this.bookorder.bookordered().subscribe(
-   (res) => {
-    console.log(res);
-    //this.router.navigateByUrl('/confirm')
+   (res: any) => {
+    //console.log(res._id);
+    this.router.navigateByUrl('/thanks')
    },
    err=>{
      console.log(err)

@@ -1,8 +1,25 @@
-<p>
-  user-profile works!
 
-</p>
-<div *ngIf="userDetails">
-  {{userDetails.name}}
-  {{userDetails.email}}
+<div *ngIf="userDetails" class="text-center col-md-6 mx-auto" [ngStyle]="{'top': '10px'}">
+  <table class="table table-hover table-primary">
+    <thead>
+      <tr>
+
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+
+        <td> {{userDetails.name}}</td>
+        <td> {{userDetails.email}}</td>
+
+      </tr>
+
+
+    </tbody>
+    <input type="button" (click)="onLogout()" class="btn btn-primary" value="Logout">
+  </table>
+
 </div>

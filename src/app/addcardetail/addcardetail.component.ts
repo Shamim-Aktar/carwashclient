@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddcarserviceService } from '../shared/addcarservice.service';
+import { BookorderService } from '../shared/bookorder.service';
 
 @Component({
   selector: 'app-addcardetail',
@@ -12,16 +13,20 @@ export class AddcardetailComponent implements OnInit {
 
   showSuccessMessage: boolean;
   serverErrorMessage: string;
-  constructor(private addcarservcie: AddcarserviceService) { }
+  brandname: string;
+  constructor(private addcarservcie: AddcarserviceService, private bookorder: BookorderService) { }
 
   ngOnInit() {
+
   }
 
   onSubmit(form: NgForm) {
     this.addcarservcie.postCarDetail(form.value).subscribe(
-      (res) => {
-        console.log(res);
+      (res: any) => {
         this.showSuccessMessage = true;
+        console.log(res);
+
+
         setTimeout(() => this.showSuccessMessage = false, 4000);
         this.resetForm(form);
       },

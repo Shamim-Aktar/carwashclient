@@ -9,16 +9,24 @@ import {Router} from '@angular/router';
 })
 export class UserProfileComponent implements OnInit {
 
-  userDetails
+  userDetails;
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getUserProfile().subscribe(
-      res=>{
-          this.userDetails=res['user']
+      res => {
+        console.log(res);
+        this.userDetails = res['user']
+        console.log('profile', this.userDetails);
       },
-      err=>{}
-    )
+      err => {}
+    );
   }
+
+onLogout() {
+  this.userService.deleteToken();
+  this.router.navigateByUrl('/login');
+}
+
 
 }

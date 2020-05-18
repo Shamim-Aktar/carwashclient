@@ -34,8 +34,22 @@
                  >
             </div>
 
+
         </div>
-        <button (click)="getModel()">getdata</button>
+
+        <div class="form-group row">
+          <label class="col-lg-3 col-form-label form-control-label">Date</label>
+          <div class="col-lg-9">
+            <input type="date" id="bookdate" name="bookdate" #bookdate="ngModel" required
+             [(ngModel)]="bookorder.bookingmodel.date"
+            >
+          </div>
+
+
+      </div>
+
+
+        <button (click)="getModel()" class="btn btn-primary float-right">Book Order</button>
 
         </form>
 

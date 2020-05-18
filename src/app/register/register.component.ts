@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { NgForm } from '@angular/forms';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,17 +14,18 @@ export class RegisterComponent implements OnInit {
  showSuccessMessage: boolean;
  serverErrorMessage: string;
  emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
     this.userService.postUser(form.value).subscribe(
-      res=>{
+      res => {
         this.showSuccessMessage = true;
-        setTimeout(()=>this.showSuccessMessage = false, 4000)
-        this.resetForm(form)
+        setTimeout(() => this.showSuccessMessage = false, 4000);
+
+        this.resetForm(form);
       },
       err => {
         if (err.status === 400) {
@@ -35,12 +37,12 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  resetForm (form: NgForm) {
+  resetForm(form: NgForm) {
     this.userService.selectedUser = {
       name: '',
       email: '',
       password: ''
-    }
+    };
   }
 
 }
