@@ -1,6 +1,31 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap' ;
 import { AddcardetailComponent } from './addcardetail.component';
+import {FormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser'
+// import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {HttpClientModule} from '@angular/common/http';
+import { AddcarserviceService } from '../shared/addcarservice.service';
+
+
+
+
+// describe('AddcardetailComponent (minimal)', () => {
+//   it('should create', () => {
+//     TestBed.configureTestingModule({
+//       imports: [BrowserModule,
+//         NgbModule.forRoot(), FormsModule, HttpClient ],
+//       declarations: [ AddcardetailComponent ],
+//       providers:[AddcarserviceService]
+//     });
+//     const fixture = TestBed.createComponent(AddcardetailComponent);
+//     const component = fixture.componentInstance;
+//     expect(component).toBeDefined();
+//   });
+// });
+
+
 
 describe('AddcardetailComponent', () => {
   let component: AddcardetailComponent;
@@ -8,7 +33,10 @@ describe('AddcardetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddcardetailComponent ]
+          imports: [BrowserModule, HttpClientModule, HttpClientTestingModule,
+       NgbModule.forRoot(), FormsModule, ],
+      declarations: [ AddcardetailComponent ],
+      providers:[AddcarserviceService]
     })
     .compileComponents();
   }));
@@ -16,10 +44,16 @@ describe('AddcardetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AddcardetailComponent);
     component = fixture.componentInstance;
+    component.ngOnInit();
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be created', () => {
+    const service: AddcarserviceService = TestBed.get(AddcarserviceService);
+    expect(service).toBeTruthy();
+   });
 });

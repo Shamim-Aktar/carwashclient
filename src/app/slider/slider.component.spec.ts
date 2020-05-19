@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SliderComponent } from './slider.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('SliderComponent', () => {
   let component: SliderComponent;
@@ -8,6 +9,7 @@ describe('SliderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports:[NgbModule.forRoot()],
       declarations: [ SliderComponent ]
     })
     .compileComponents();
