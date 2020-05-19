@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BookorderService} from '../shared/bookorder.service';
 import {Router} from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-bookforwash',
@@ -23,12 +24,13 @@ export class BookforwashComponent implements OnInit {
 
       }
 
-getModel( ) {
+getModel(form:NgForm ) {
   //console.log(data)
  this.bookorder.bookordered().subscribe(
    (res: any) => {
     //console.log(res._id);
     this.router.navigateByUrl('/thanks')
+    this.resetForm(form);
    },
    err=>{
      console.log(err)
@@ -37,6 +39,20 @@ getModel( ) {
 }
 
 
+
+resetForm(form: NgForm) {
+  this.bookorder.bookingmodel = {
+
+    carType: '',
+    serviceType: '',
+    bookingNumber: '',
+    paymentMode: 'COD',
+    price: '200',
+    address: '',
+    vehiclenumber: '',
+    date: ''
+};
+}
 
 
 

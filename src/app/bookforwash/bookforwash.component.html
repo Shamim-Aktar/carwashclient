@@ -44,7 +44,7 @@
                >
           </div>
 
-          <div *ngIf="bookingform.submitted && !vehiclenumber.valid && (vehiclenumber.dirty || vehiclenumber.touched )" class="alert alert-danger">
+          <div *ngIf="bookingform.submitted && !vehiclenumber.valid && (vehiclenumber.dirty || vehiclenumber.touched || vehiclenumber.pristine )" class="alert alert-danger">
             <label class="validation-message">This field is required</label>
 
           </div>
