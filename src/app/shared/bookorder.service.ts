@@ -18,6 +18,7 @@ export class BookorderService {
       paymentMode: '',
       price: '',
       address: '',
+      vehiclenumber:'',
       date:''
   };
 
@@ -67,6 +68,7 @@ export class BookorderService {
       paymentMode: 'COD',
       price: '200',
       address: this.bookingmodel.address,
+      vehiclenumber: this.bookingmodel.vehiclenumber,
       date: this.bookingmodel.date
   };
     console.log(this.bookingmodel);
